@@ -1,21 +1,42 @@
-import { AuthProvider } from '@/contexts/AuthContext';
-import { type ReactNode } from 'react';
+'use client';
+
+import { useEffect, type ReactNode } from 'react';
+import { useColorScheme, Platform, StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { WebOnlyColorSchemeUpdater } from './ColorSchemeUpdater';
+import { AuthProvider } from '@/contexts/AuthContext';
 import { HeroUINativeProvider } from '@/heroui';
 
-function Provider({ children }: { children: ReactNode }) {
-  return <WebOnlyColorSchemeUpdater>
-    <AuthProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <HeroUINativeProvider>
-          {children}
-        </HeroUINativeProvider>
-      </GestureHandlerRootView>
-    </AuthProvider>
-  </WebOnlyColorSchemeUpdater>
+type ThemeMode = 'light' | 'dark' | 'system';
+const DEFAULT_THEME: ThemeMode = 'system';
+
+function ColorSchemeUpdater({ children }: { children: ReactNode }) {
+  const colorScheme = useColorScheme();
+  
+  useEffect(() => {
+    const theme =
+      DEFAULT_THEME === 'system'
+        ? (colorScheme as 'light' | 'dark' || 'light')
+        : DEFAULT_THEME;
+
+    // Update status bar style based on theme
+    StatusBar.setBarStyle(theme === 'dark' ? 'light-content' : 'dark-content');
+  }, [colorScheme]);
+
+  return <>{children}</>;
 }
 
-export {
-  Provider,
+function Provider({ children }: { children: ReactNode }) {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ColorSchemeUpdater>
+        <AuthProvider>
+          <HeroUINativeProvider>
+            {children}
+          </HeroUINativeProvider>
+        </AuthProvider>
+      </ColorSchemeUpdater>
+    </GestureHandlerRootView>
+  );
 }
+
+export default Provider;
