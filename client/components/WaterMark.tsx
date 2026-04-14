@@ -11,13 +11,11 @@ const WaterMark: React.FC<WaterMarkProps> = ({ enabled = true }) => {
 
   return (
     <View style={styles.container} pointerEvents="none">
-      <View style={styles.watermark}>
-        <Image
-          source={require('@/assets/watermark.png')}
-          style={styles.image}
-          resizeMode="contain"
-        />
-      </View>
+      <Image
+        source={require('../assets/watermark.png')}
+        style={styles.image}
+        resizeMode="contain"
+      />
     </View>
   );
 };
@@ -29,14 +27,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 9999,
   },
-  watermark: {
+  image: {
     opacity: 0.15,
     width: 150,
     height: 150,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
   },
 });
 
