@@ -1,23 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 interface WaterMarkProps {
-  /** 水印文字，默认显示"云用药" */
-  text?: string;
   /** 是否启用水印，默认 true */
   enabled?: boolean;
 }
 
-const WaterMark: React.FC<WaterMarkProps> = ({ 
-  text = '云用药', 
-  enabled = true 
-}) => {
+const WaterMark: React.FC<WaterMarkProps> = ({ enabled = true }) => {
   if (!enabled) return null;
 
   return (
     <View style={styles.container} pointerEvents="none">
       <View style={styles.watermark}>
-        <Text style={styles.text}>{text}</Text>
+        <Image
+          source={require('@/assets/watermark.png')}
+          style={styles.image}
+          resizeMode="contain"
+        />
       </View>
     </View>
   );
@@ -31,13 +30,14 @@ const styles = StyleSheet.create({
     zIndex: 9999,
   },
   watermark: {
-    transform: [{ rotate: '-30deg' }],
-    opacity: 0.08,
+    transform: [{ rotate: '-25deg' }],
+    opacity: 0.15,
+    width: 200,
+    height: 200,
   },
-  text: {
-    fontSize: 48,
-    fontWeight: '700',
-    color: '#0D9488',
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });
 
