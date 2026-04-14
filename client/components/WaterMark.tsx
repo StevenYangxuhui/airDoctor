@@ -30,10 +30,9 @@ const styles = StyleSheet.create({
     zIndex: 9999,
   },
   watermark: {
-    transform: [{ rotate: '-25deg' }],
     opacity: 0.15,
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
   },
   image: {
     width: '100%',
