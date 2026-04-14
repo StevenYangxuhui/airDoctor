@@ -9,7 +9,7 @@ import {
   Alert,
   Linking,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Screen } from '@/components/Screen';
 import { useSafeRouter } from '@/hooks/useSafeRouter';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { useFocusEffect } from 'expo-router';
@@ -91,7 +91,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         refreshControl={
@@ -255,7 +255,7 @@ const HomeScreen = () => {
         {/* 底部安全距离 */}
         <View style={{ height: 20 }} />
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 }
 

@@ -8,7 +8,7 @@ import {
   ScrollView,
   Keyboard,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Screen } from '@/components/Screen';
 import { useSafeRouter } from '@/hooks/useSafeRouter';
 import { FontAwesome6 } from '@expo/vector-icons';
 
@@ -135,7 +135,7 @@ const DietSearchScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
@@ -251,7 +251,7 @@ const DietSearchScreen = () => {
           </View>
         )}
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 };
 

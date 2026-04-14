@@ -8,7 +8,7 @@ import {
   RefreshControl,
   Alert,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Screen } from '@/components/Screen';
 import { useSafeRouter } from '@/hooks/useSafeRouter';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { useFocusEffect } from 'expo-router';
@@ -125,7 +125,7 @@ const RecordsScreen = () => {
   const filteredRecords = filterType === 'all' ? records : records.filter(r => r.type === filterType);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <View style={styles.header}>
         <Text style={styles.title}>健康记录</Text>
         <TouchableOpacity
@@ -223,7 +223,7 @@ const RecordsScreen = () => {
         )}
         <View style={{ height: 100 }} />
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 };
 

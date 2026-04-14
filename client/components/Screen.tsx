@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Platform,
   StyleSheet,
@@ -20,6 +20,8 @@ import {
   KeyboardAwareFlatList,
   KeyboardAwareSectionList
 } from 'react-native-keyboard-aware-scroll-view';
+// 引入水印组件
+import WaterMark from './WaterMark';
 
 /**
  * # Screen 组件使用指南
@@ -152,7 +154,7 @@ const RawScreen = ({
   const insets = useSafeAreaInsets();
   const [keyboardShown, setKeyboardShown] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
     const hideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
     const s1 = Keyboard.addListener(showEvent, () => setKeyboardShown(true));
@@ -302,6 +304,9 @@ const RawScreen = ({
           </TouchableWithoutFeedback>
         )
       )}
+      
+      {/* 水印 - 显示在页面正中间，不影响交互 */}
+      <WaterMark />
     </View>
   );
 };

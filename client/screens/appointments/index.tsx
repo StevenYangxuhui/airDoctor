@@ -10,7 +10,7 @@ import {
   Modal,
   TextInput,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Screen } from '@/components/Screen';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { useSafeRouter } from '@/hooks/useSafeRouter';
 import { FontAwesome6 } from '@expo/vector-icons';
@@ -202,7 +202,7 @@ const AppointmentsScreen = () => {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <View style={styles.header}>
         <Text style={styles.title}>复诊提醒</Text>
         <TouchableOpacity
@@ -406,7 +406,7 @@ const AppointmentsScreen = () => {
           </View>
         </KeyboardAvoidingView>
       </Modal>
-    </SafeAreaView>
+    </Screen>
   );
 };
 

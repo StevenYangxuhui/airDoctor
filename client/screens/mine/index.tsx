@@ -7,7 +7,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Screen } from '@/components/Screen';
 import { useSafeRouter } from '@/hooks/useSafeRouter';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { useAuth } from '@/contexts/AuthContext';
@@ -72,7 +72,7 @@ const MineScreen = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <View style={styles.header}>
         <Text style={styles.title}>我的</Text>
       </View>
@@ -127,7 +127,7 @@ const MineScreen = () => {
         {/* 底部安全距离 */}
         <View style={{ height: 100 }} />
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 };
 

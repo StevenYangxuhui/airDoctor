@@ -7,7 +7,7 @@ import {
   ScrollView,
   RefreshControl,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Screen } from '@/components/Screen';
 import { useSafeRouter } from '@/hooks/useSafeRouter';
 import { FontAwesome6 } from '@expo/vector-icons';
 
@@ -43,7 +43,7 @@ const DietScreen = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <View style={styles.header}>
         <Text style={styles.title}>饮食红绿灯</Text>
       </View>
@@ -149,7 +149,7 @@ const DietScreen = () => {
 
         <View style={{ height: 100 }} />
       </ScrollView>
-    </SafeAreaView>
+    </Screen>
   );
 };
 
